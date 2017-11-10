@@ -2,8 +2,8 @@
 //11/6/17
 //OOP Project 2
 //Used for Button in GUI
-public class Groups implements Visitor {
-	int numGroups = 0;
+public class NumOfGroups implements Visitor {
+	int numGroups = 1;
 
 	public void visit(User a) {
 		if (a instanceof UserGroup) {

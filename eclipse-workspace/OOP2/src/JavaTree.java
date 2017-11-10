@@ -32,10 +32,10 @@ public class JavaTree implements Host {
 			System.out.println("Error, no duplicate allowed");
 			return false;
 		}
-		if (parent instanceof User) {
-			System.out.println("Error, User was not added");
-			return false;
-		}
+	//	if (parent instanceof User) {
+	//		System.out.println("Error, not added");
+	//		return false;
+	//	}
 		data.put(child.getID(), child);
 		tree.insertNodeInto(child, parent, parent.getChildCount());
 		return true;

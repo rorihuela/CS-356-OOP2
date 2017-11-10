@@ -21,7 +21,7 @@ import javax.swing.tree.TreeSelectionModel;
 public class AdminGui extends JFrame {
 	private static AdminGui instance;
 
-	//Signleton design
+	// Signleton design
 	public static AdminGui getInstance() {
 		if (instance == null) {
 			instance = new AdminGui();
@@ -128,7 +128,7 @@ public class AdminGui extends JFrame {
 
 	private void createPanel() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Admin Control Panel");
+		setTitle("Twitter");
 		setBounds(100, 100, 760, 710);
 		panel = new JPanel();
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -137,7 +137,7 @@ public class AdminGui extends JFrame {
 	}
 
 	private void treeImplement() {
-	
+
 		treePanel = new JPanel();
 		treePanel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tree View",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -151,7 +151,7 @@ public class AdminGui extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(tree);
 		scrollPane.setBounds(10, 21, 231, 638);
 		treePanel.add(scrollPane);
-	
+
 		Icon leafIcon = UIManager.getIcon("FileView.fileIcon");
 		Icon nonLeafIcon = UIManager.getIcon("FileView.directoryIcon");
 		tree.setCellRenderer(new TreeStructure(leafIcon, nonLeafIcon));
@@ -164,32 +164,32 @@ public class AdminGui extends JFrame {
 		addUser.addActionListener((ActionListener) handler);
 		addUser.setBounds(540, 135, 170, 70);
 		panel.add(addUser);
-	 
+
 		addGroup = new JButton("Add Group");
 		addGroup.addActionListener((ActionListener) handler);
 		addGroup.setBounds(540, 34, 170, 70);
 		panel.add(addGroup);
-	 
+
 		seeUserPanel = new JButton("Open Twitter User data View");
 		seeUserPanel.addActionListener((ActionListener) handler);
 		seeUserPanel.setBounds(300, 245, 384, 70);
 		panel.add(seeUserPanel);
-	 
+
 		seeNumUser = new JButton("Show User Total");
 		seeNumUser.addActionListener((ActionListener) handler);
 		seeNumUser.setBounds(300, 460, 170, 70);
 		panel.add(seeNumUser);
-	 
+
 		seeNumGroup = new JButton("Show Group Total");
 		seeNumGroup.addActionListener(handler);
 		seeNumGroup.setBounds(540, 540, 170, 70);
 		panel.add(seeNumGroup);
-	 
+
 		seeNumMessage = new JButton("Show Messages Total");
 		seeNumMessage.addActionListener(handler);
 		seeNumMessage.setBounds(300, 540, 170, 70);
 		panel.add(seeNumMessage);
-	 
+
 		seePercentage = new JButton("Show Positive Percentage");
 		seePercentage.addActionListener(handler);
 		seePercentage.setBounds(540, 460, 170, 70);
@@ -267,9 +267,9 @@ public class AdminGui extends JFrame {
 			} else {
 				PopUp p = new PopUp();
 				if (e.getSource() == AdminGui.getInstance().getSeeNumGroup()) {
-					NumOfUsers numUser = new NumOfUsers();
-					JavaTree.invite(numUser);
-					p.infoBox(numUser.getNum(), "Number of Groups");
+					NumOfGroups numGroup = new NumOfGroups();
+					JavaTree.invite(numGroup);
+					p.infoBox(numGroup.GetNumOfGroups(), "Number of Groups");
 
 				} else if (e.getSource() == AdminGui.getInstance().getSeeNumMessage()) {
 

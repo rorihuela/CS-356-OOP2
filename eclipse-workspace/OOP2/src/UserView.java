@@ -13,6 +13,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTree;
 import javax.swing.ListModel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
@@ -54,7 +55,7 @@ public class UserView extends JFrame {
 		this.setVisible(true);
 
 	}
-	public UserView(Client node, javax.swing.JTree tree) {
+	public UserView(Client node, JTree tree) {
 		this.currentClient=node;
 		this.treeImplements=tree;
 		currentClient.getNewsfeed();
@@ -71,7 +72,7 @@ public class UserView extends JFrame {
 	//Constructors end
 	private void initializeWindow(){
 		
-		setTitle(currentClient.getID()+"'s "+"Client View");
+		setTitle(currentClient.getID()+"'s "+"Feed");
 		setBounds(100, 100, 477, 435);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -151,7 +152,6 @@ public class UserView extends JFrame {
 	}
 	public void follow(Client userToFollow) {
 		this.currentClient.follow((Client) userToFollow);
-		window.infoBox(userToFollow.getID(),"Now following user:");
 	}
 	public void tweet(String msg) {
 		this.currentClient.postTweet(msg);
@@ -171,6 +171,7 @@ public class UserView extends JFrame {
 					return;
 				}
 				if(alreadyFollowingClient(node)){
+					window.infoBox("Already following user", "ERROR!");
 					return;
 				}
 				else if(!(node instanceof Client)){
